@@ -26,11 +26,11 @@ async function run() {
        })
        //post data
        app.post('/volunteer',async(req,res)=>{
-           const id=req.params.id
-           const query={_id:ObjectId(id)}
-           const result=await Volunteercollection.findOne(query)
-           res.send(result)
-       })
+        const newUser=req.body
+        console.log('adding new user',newUser);
+        const result=await Volunteercollection.insertOne(newUser)
+        res.send(result)
+    })
 
     }
     finally{
